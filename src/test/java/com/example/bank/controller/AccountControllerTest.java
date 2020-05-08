@@ -35,7 +35,7 @@ class AccountControllerTest {
     private AccountService accountService;
 
     @Test
-    void createFish() throws Exception {
+    void createAccount() throws Exception {
         Account account = Account.builder().build();
 
         when(accountService.create(any(AccountCreateDto.class))).thenReturn(account);

@@ -32,7 +32,7 @@ public class AccountController {
     })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AccountResponseDto createFish(@Valid @RequestBody AccountCreateDto accountCreateDto) {
+    public AccountResponseDto createAccount(@Valid @RequestBody AccountCreateDto accountCreateDto) {
         Account account = accountService.create(accountCreateDto);
         return accountDtoAssembler.toModel(account);
     }
