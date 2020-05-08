@@ -16,7 +16,7 @@ public class AccountCreateDto {
     private Long customerId;
 
     @NotNull
-    @DecimalMin(value = "0.0", inclusive = false)
+    @DecimalMin(value = "0.0")
     @Digits(integer = Integer.MAX_VALUE, fraction = 3)
     private BigDecimal initialCredit;
 
