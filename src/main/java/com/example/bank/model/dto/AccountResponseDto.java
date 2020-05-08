@@ -1,6 +1,5 @@
 package com.example.bank.model.dto;
 
-import com.example.bank.model.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -41,7 +41,8 @@ class AccountServiceTest {
                 .initialCredit(BigDecimal.ZERO)
                 .build();
 
-        when(userRepository.findById(1L)).thenReturn(Optional.of(User.builder().build()));
+        User build = new User();
+        when(userRepository.findById(1L)).thenReturn(Optional.of(build));
         ArgumentCaptor<Account> accountArgumentCaptor = ArgumentCaptor.forClass(Account.class);
 
         Account account = accountService.create(dto);
@@ -60,7 +61,8 @@ class AccountServiceTest {
                 .initialCredit(BigDecimal.ONE)
                 .build();
 
-        when(userRepository.findById(1L)).thenReturn(Optional.of(User.builder().build()));
+        User build = new User();
+        when(userRepository.findById(1L)).thenReturn(Optional.of(build));
         ArgumentCaptor<Account> accountArgumentCaptor = ArgumentCaptor.forClass(Account.class);
 
         Account account = accountService.create(dto);
