@@ -1,6 +1,7 @@
 # Simple bank account application and API.
 
 This is a Java RESTful Web Service ​that you can create account for existing customer and view customer data. 
+By default, two customers are being inserted to database while the application is starting. You can check `data.sql` file.
 
 * After running application you can click below links to see API related documentation:
 
@@ -33,3 +34,6 @@ How to run locally with docker :
 2. `docker build . -t bank-app-image` --> build docker image
 3. `docker run -p 8080:8080  bank-app-image` --> run docker image
 
+
+
+[data.sql]: data.sql
