@@ -25,7 +25,7 @@ public class CustomerDtoAssembler extends RepresentationModelAssemblerSupport<Us
     public CustomerResponseDto toModel(User entity) {
         CustomerResponseDto customerResponseDto = new CustomerResponseDto();
         BeanUtils.copyProperties(entity, customerResponseDto);
-        customerResponseDto.setAccounts(accountDtoAssembler.toCollectionModel(entity.getAccounts()));
+        entity.getAccounts().forEach(account -> customerResponseDto.addAccount(accountDtoAssembler.toModel(account)));
         customerResponseDto.add(linkTo(methodOn(CustomerController.class).findById(customerResponseDto.getId())).withSelfRel());
         return customerResponseDto;
     }

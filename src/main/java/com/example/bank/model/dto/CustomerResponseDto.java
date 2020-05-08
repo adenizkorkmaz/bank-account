@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,6 +25,13 @@ public class CustomerResponseDto extends RepresentationModel<CustomerResponseDto
 
     private LocalDateTime createdAt;
 
-    private CollectionModel<AccountResponseDto> accounts;
+    private List<AccountResponseDto> accountList;
+
+    public void addAccount(AccountResponseDto accountResponseDto) {
+        if (CollectionUtils.isEmpty(accountList)) {
+            accountList = new ArrayList<>();
+        }
+        accountList.add(accountResponseDto);
+    }
 }
 
