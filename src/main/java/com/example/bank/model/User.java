@@ -28,5 +28,6 @@ public class User {
     private LocalDateTime createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OrderBy("createdAt DESC")
     private List<Account> accounts = new ArrayList<>();
 }

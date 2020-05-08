@@ -31,7 +31,7 @@ public class Account {
 
     private BigDecimal balance;
 
-    private boolean isCurrent;
+    private boolean current;
 
     private String accountNumber;
 

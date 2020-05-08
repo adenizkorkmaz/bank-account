@@ -18,19 +18,6 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value = BadRequestException.class)
-    protected ResponseEntity<ErrorDto> handleBadRequest(BadRequestException ex) {
-        ErrorDto errorDto = ErrorDto.builder()
-                .status(HttpStatus.BAD_REQUEST.value())
-                .error(HttpStatus.BAD_REQUEST.name())
-                .timestamp(System.currentTimeMillis())
-                .errorMessages(Collections.singletonList(ex.getMessage()))
-                .build();
-        log.error("BadRequestException: " + errorDto.toString());
-        return ResponseEntity.badRequest().body(
-                errorDto);
-    }
-
     @ExceptionHandler(value = NotFoundException.class)
     protected ResponseEntity<ErrorDto> handleNotFound(NotFoundException ex) {
         ErrorDto errorDto = ErrorDto.builder()
@@ -39,7 +26,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .timestamp(System.currentTimeMillis())
                 .errorMessages(Collections.singletonList(ex.getMessage() + " Id : " + ex.getEntityId()))
                 .build();
-        log.error("BadRequestException: " + errorDto.toString());
+        log.error("Not found exception: " + errorDto.toString());
         return new ResponseEntity<>(errorDto, HttpStatus.NOT_FOUND);
 
     }

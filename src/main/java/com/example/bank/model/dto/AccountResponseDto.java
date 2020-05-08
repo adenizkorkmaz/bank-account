@@ -16,6 +16,8 @@ public class AccountResponseDto extends RepresentationModel<AccountResponseDto> 
 
     private BigDecimal balance;
 
+    private Boolean current;
+
     private LocalDateTime createdAt;
 
     private LocalDateTime lastUpdated;

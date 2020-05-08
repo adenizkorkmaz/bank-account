@@ -1,5 +1,6 @@
 package com.example.bank.service;
 
+import com.example.bank.exception.NotFoundException;
 import com.example.bank.model.User;
 import com.example.bank.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -13,9 +14,9 @@ public class CustomerService {
 
     private final UserRepository userRepository;
 
-
     public User findBy(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found exception"));
+        return userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Not found exception", id));
     }
 
     public Iterable<User> findAll() {
