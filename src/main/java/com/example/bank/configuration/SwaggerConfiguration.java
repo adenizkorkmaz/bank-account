@@ -38,8 +38,8 @@ public class SwaggerConfiguration {
     }
 
     private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("Pet Fish Co.")
-                .description("Bank account application and API for Pet Fish Co.")
+        return new ApiInfoBuilder().title("Bank account application")
+                .description("Simple bank account application and API.")
                 .version("0.0.1-SNAPSHOT")
                 .build();
     }

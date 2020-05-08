@@ -20,6 +20,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 class AccountServiceTest {
@@ -43,6 +44,7 @@ class AccountServiceTest {
 
         User build = new User();
         when(userRepository.findById(1L)).thenReturn(Optional.of(build));
+        when(accountRepository.save(any())).thenReturn(Account.builder().id(11L).build());
         ArgumentCaptor<Account> accountArgumentCaptor = ArgumentCaptor.forClass(Account.class);
 
         Account account = accountService.create(dto);
@@ -63,6 +65,8 @@ class AccountServiceTest {
 
         User build = new User();
         when(userRepository.findById(1L)).thenReturn(Optional.of(build));
+        when(accountRepository.save(any())).thenReturn(Account.builder().id(11L).build());
+
         ArgumentCaptor<Account> accountArgumentCaptor = ArgumentCaptor.forClass(Account.class);
 
         Account account = accountService.create(dto);

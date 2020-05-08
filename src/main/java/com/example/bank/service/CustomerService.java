@@ -15,8 +15,14 @@ public class CustomerService {
     private final UserRepository userRepository;
 
     public User findBy(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Not found exception", id));
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.error("Customer not found with id :" + id);
+                    return new NotFoundException("Not found exception", id);
+                });
+
+        log.info("Customer retrieved with id : " + id);
+        return user;
     }
 
     public Iterable<User> findAll() {

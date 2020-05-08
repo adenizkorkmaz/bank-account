@@ -28,7 +28,11 @@ public class AccountService {
     @Transactional
     public Account create(AccountCreateDto dto) {
         User customer = userRepository.findById(dto.getCustomerId())
-                .orElseThrow(() -> new NotFoundException("User cannot be found", dto.getCustomerId()));
+                .orElseThrow(() -> {
+                    log.error("Account creation : User not found with id :" + dto.getCustomerId());
+                    return new NotFoundException("User cannot be found", dto.getCustomerId());
+                });
+
 
         customer.getAccounts().forEach(account -> account.setCurrent(false));
 
@@ -51,11 +55,19 @@ public class AccountService {
             account.getTransactions().add(build);
         }
 
-        return accountRepository.save(account);
+        Account save = accountRepository.save(account);
+        log.info("Account is created successfully with id : " + save.getId());
+        return save;
     }
 
     public Account findBy(Long id) {
-        return accountRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Account cannot be found", id));
+        Account account = accountRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.error("Account not found with id : " + id);
+                    return new NotFoundException("Account cannot be found", id);
+                });
+
+        log.info("Account retrieved with id : " + id);
+        return account;
     }
 }
