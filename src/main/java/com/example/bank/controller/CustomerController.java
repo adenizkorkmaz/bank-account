@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/customers")
 @AllArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*")
 public class CustomerController {
 
     private final CustomerService customerService;

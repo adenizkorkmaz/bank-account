@@ -20,6 +20,7 @@ import javax.validation.Valid;
 @RequestMapping("/accounts")
 @AllArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*")
 public class AccountController {
 
     private final AccountService accountService;

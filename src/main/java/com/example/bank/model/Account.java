@@ -29,6 +29,9 @@ public class Account {
 
     private BigDecimal balance;
 
+    @Enumerated(EnumType.STRING)
+    private Currency currency = Currency.EURO;
+
     private boolean current;
 
     private String accountNumber;
